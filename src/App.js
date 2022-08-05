@@ -12,7 +12,7 @@ class App extends React.Component {
     colorSteps: [],
     currentStep: 0,
     arraySize: 5,
-    speed: 1000,
+    speed: 500,
     algorithm: "Bubble Sort",
     timeouts: [],
     sorting: false,
