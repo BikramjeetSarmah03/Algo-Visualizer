@@ -3,8 +3,7 @@ import { Bar } from "../../../utils";
 import ArrayContext from "../../../utils/ArrayContext";
 
 const SortChart = () => {
-  const { array } = useContext(ArrayContext);
-
+  const { array, colorKey } = useContext(ArrayContext);
   return (
     <div className="p-4 bg-gray-200 h-[50vh] flex items-end shadow-inner">
       {array.map((value, index) => {
@@ -15,11 +14,11 @@ const SortChart = () => {
         return (
           <Bar
             key={index}
-            index={index}
             number={value}
             height={height}
             width={width}
             length={array.length}
+            color={colorKey[index]}
           />
         );
       })}

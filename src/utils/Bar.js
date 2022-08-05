@@ -1,21 +1,21 @@
 import React from "react";
 
-const Bar = ({ index, number, height, width, length }) => {
+const Bar = ({ number, height, width, length, color }) => {
   const colors = [
-    ["rgba(147,197,253,1"],
+    ["rgba(255,255,255,1)"],
+    ["rgba(185,28,28,1"],
     ["rgba(252, 165, 165, 0.5)"],
     ["rgba(134,239,172,0.5"],
   ];
 
+  const barStyles = {
+    height: `${height}%`,
+    width: `${width}%`,
+    backgroundColor: colors[color],
+  };
+
   return (
-    <div
-      className="bg-red-300 mr-0.5 text-center "
-      id={index}
-      style={{
-        height: `${height}%`,
-        width: `${width}%`,
-      }}
-    >
+    <div className=" shadow-md mr-0.5 text-center  " style={barStyles}>
       {length < 25 && <span>{number}</span>}
     </div>
   );

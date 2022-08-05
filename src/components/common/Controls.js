@@ -6,38 +6,14 @@ import { Speed } from "../../Data/Speed";
 import ArrayContext from "../../utils/ArrayContext";
 
 const Controls = () => {
-  const {
-    randomArray,
-    algorithm,
-    setAlgorithm,
-    arrSize,
-    setArrSize,
-    speed,
-    setSpeed,
-    handleSort,
-  } = useContext(ArrayContext);
-
-  const handleAlgo = (e) => {
-    setAlgorithm(e.target.value);
-  };
-
-  const handleSize = (e) => {
-    setArrSize(e.target.value);
-  };
-
-  const handleSpeed = (e) => {
-    setSpeed(e.target.value);
-  };
+  const { play, previousStep, nextStep, randomArray, sorting } =
+    useContext(ArrayContext);
 
   return (
     <div>
-      <div className="flex items-center justify-around px-4 py-2 mt-4 font-serif text-xl shadow">
+      <div className="flex flex-col items-center justify-around px-4 py-2 mt-4 font-serif text-sm shadow sm:flex-row sm:text-xl">
         <div className="flex items-center space-x-4">
-          <select
-            className="text-sm bg-white cursor-pointer sm:py-2 sm:text-xl"
-            defaultValue={algorithm}
-            onChange={(e) => handleAlgo(e)}
-          >
+          <select className="bg-white cursor-pointer sm:py-2" disabled>
             {SortingAlgorithms.map(({ id, name }) => (
               <option value={name} key={id}>
                 {name}
@@ -45,11 +21,7 @@ const Controls = () => {
             ))}
           </select>
           <span className="hidden mr-1 sm:inline-block">Size:</span>
-          <select
-            className="py-2 bg-white cursor-pointer"
-            defaultValue={arrSize}
-            onChange={handleSize}
-          >
+          <select className="py-2 bg-white cursor-pointer" disabled>
             {Sizes.map(({ id, size }) => (
               <option value={size} key={id}>
                 {size}
@@ -59,11 +31,7 @@ const Controls = () => {
         </div>
         <div className="flex items-center">
           <span>Speed : </span>
-          <select
-            className="py-2 bg-white cursor-pointer"
-            defaultValue={speed}
-            onChange={handleSpeed}
-          >
+          <select className="py-2 bg-white cursor-pointer" disabled>
             {Speed.map(({ id, speed, value }) => (
               <option value={value} key={id}>
                 {speed}
@@ -71,21 +39,34 @@ const Controls = () => {
             ))}
           </select>
 
-          <button className="ml-8" onClick={randomArray}>
+          <button
+            className={`ml-8 ${
+              sorting === true ? "cursor-not-allowed" : "cursor-pointer"
+            }`}
+            onClick={randomArray}
+            disabled={sorting === true ? true : false}
+          >
             Randomize
           </button>
         </div>
       </div>
       <div className="flex items-center justify-center px-4 py-2 mt-4 font-serif text-xl shadow">
         <button className="mx-4 text-2xl ">{Repeat}</button>
-        <button className="mx-4 text-3xl ">{Previous}</button>
+        <button className="mx-4 text-3xl " onClick={previousStep}>
+          {Previous}
+        </button>
         <button
-          className="p-2 mx-4 text-5xl bg-pink-300 rounded-full "
-          onClick={handleSort}
+          className={`p-2 mx-4 text-5xl bg-pink-300 rounded-full ${
+            sorting === true ? "cursor-not-allowed" : "cursor-pointer"
+          }`}
+          onClick={play}
+          disabled={sorting === true ? true : false}
         >
           {Play}
         </button>
-        <button className="mx-4 text-3xl ">{Next}</button>
+        <button className="mx-4 text-3xl " onClick={nextStep}>
+          {Next}
+        </button>
       </div>
     </div>
   );
