@@ -1,12 +1,22 @@
 import React from "react";
 
-const Bar = ({ number, height, width }) => {
+const Bar = ({ index, number, height, width, length }) => {
+  const colors = [
+    ["rgba(147,197,253,1"],
+    ["rgba(252, 165, 165, 0.5)"],
+    ["rgba(134,239,172,0.5"],
+  ];
+
   return (
     <div
-      className="bg-red-300 mr-0.5 text-center"
-      style={{ height: `${height}%`, width: `${width}%` }}
+      className="bg-red-300 mr-0.5 text-center "
+      id={index}
+      style={{
+        height: `${height}%`,
+        width: `${width}%`,
+      }}
     >
-      <span>{number}</span>
+      {length < 25 && <span>{number}</span>}
     </div>
   );
 };

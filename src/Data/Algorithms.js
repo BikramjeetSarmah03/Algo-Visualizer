@@ -1,26 +1,26 @@
 export const SortingAlgorithms = [
   {
     id: 1,
-    name: "BubbleSort",
+    name: "Bubble Sort",
   },
   {
     id: 2,
-    name: "SelectionSort",
+    name: "Selection Sort",
   },
   {
     id: 3,
-    name: "InsertionSort",
+    name: "Insertion Sort",
   },
   {
     id: 4,
-    name: "MergeSort",
+    name: "Merge Sort",
   },
   {
     id: 5,
-    name: "QuickSort",
+    name: "Quick Sort",
   },
   {
     id: 6,
-    name: "HeapSort",
+    name: "Heap Sort",
   },
 ];
